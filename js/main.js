@@ -1,14 +1,4 @@
-function settings() {
-	var settings = document.getElementById('settings');
-
-	if (settings.style.display == "none") {
-		settings.style.display = "block"
-	} else {
-		settings.style.display = "none"
-	}
-}
-
-function fullscreen() {
+function fullscreen() { // Puts the game in fullscreen
 	var canvas = document.getElementById('mainCanvas');
 
 	if (canvas.requestFullscreen) {
@@ -17,5 +7,15 @@ function fullscreen() {
 		canvas.webkitRequestFullscreen();
 	} else if (canvas.msRequestFullscreen) {
 		canvas.msRequestFullscreen();
+	}
+}
+
+function settings() { // Opens the settings popup
+	var settings = document.getElementById('settings');
+
+	if (settings.style.display == "none") {
+		settings.style.display = "block"
+	} else {
+		settings.style.display = "none"
 	}
 }

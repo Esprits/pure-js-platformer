@@ -1,0 +1,38 @@
+w95-window {
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	width: 800px;
+	height: 600px;
+
+	background: silver;
+}
+
+/* Adds a "pop out" border */
+.window-border {
+	border-style: solid;
+
+	border-top-color: #f9f9f9;
+	border-left-color: #ededed;
+	border-right-color: #474747;
+	border-bottom-color: #555555;
+
+	border-width: 2px;
+}
+
+/* Adds a "cave in" border */
+.frame-border {
+	border-style: solid;
+
+	border-top-color: #353535;
+	border-left-color: #505050;
+	border-right-color: #e8e8e8;
+	border-bottom-color: #dfdfdf;
+
+	border-width: 2px;
+}
+
+.window-title-bar {
+	
+}
