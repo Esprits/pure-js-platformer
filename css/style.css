@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'W95font';
+    src: url('../fonts/w95font/webfont/w95font.woff2') format('woff2'),
+         url('../fonts/w95font/webfont/w95font.woff2') format('woff');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'W95font';
+    src: url('../fonts/w95font/webfont/w95font-bold.woff2') format('woff2'),
+         url('../fonts/w95font/webfont/w95font-bold.woff2') format('woff');
+    font-weight: bold;
+
+}
+
+* {
+	margin: 0;
+	padding: 0;
+
+	font-family: 'W95font';
+
+  	user-select: none;
+	-webkit-user-select: none;
+  	-ms-user-select: none;
+}
+
+body {
+	background: silver;
+}
+
+.container {
+	padding: 10px;
+}
+
+nav {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+
+	width: 640px;
+}
+
+.nav-button {
+	margin: 1px;
+	padding: 5px;
+
+ 	cursor: pointer;
+}
+
+.nav-button:active {
+ 	background: #00007b;
+ 	color: white;
+}
+
+#settings {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(75px, 29px);
+
+	width: 150px;
+	height: 200px;
+
+	margin: 0;
+	padding: 1px;
+
+	background: silver;
+}
+
+#mainCanvas {
+	display: block;
+
+	background: white;
+}
+
+.pop-up-border {
+	border-style: solid;
+
+	border-top-color: #f9f9f9;
+	border-left-color: #ededed;
+	border-right-color: #474747;
+	border-bottom-color: #555555;
+
+	border-width: 2px;
+}
+
+.frame-border {
+	border-style: solid;
+
+	border-top-color: #353535;
+	border-left-color: #505050;
+	border-right-color: #e8e8e8;
+	border-bottom-color: #dfdfdf;
+
+	border-width: 2px;
+}
