@@ -25,7 +25,11 @@ class W95Window extends HTMLElement {
 				win.offsetTop - e.clientY
 			];
 
-			if (true) { // TODO Once the title bar is complete, add a verification that it's clicking in it
+			const titleBar = win.getElementsByClassName("window-title-bar")[0];
+
+ 			// Verifies if the click actually comes from the title bar (-5 is top-left & adds clientWidth/Height to it)
+			if (offset[0] <= -5 && offset[0] >= -5 - titleBar.clientWidth
+			&& offset[1] <= -5 && offset[1] >= -5 - titleBar.clientHeight) {
 				mouseDown = true;
 				win.dragged = true;
 				audio.play();
