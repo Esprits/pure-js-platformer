@@ -14,8 +14,6 @@ class W95Window extends HTMLElement {
 		var offset = [0, 0];
 		var mousePosition;
 
-		var audio = new Audio("./audio/golden_freddy.mp3");
-
 		win.classList.add("window-border");
 		addDOMElements(win);
 
@@ -32,14 +30,12 @@ class W95Window extends HTMLElement {
 			&& offset[1] <= -5 && offset[1] >= -5 - titleBar.clientHeight) {
 				mouseDown = true;
 				win.dragged = true;
-				audio.play();
 			}
 		}, true);
 
 		document.addEventListener('mouseup', function(e) {
 			mouseDown = false;
 			win.dragged = false;
-			audio.pause();
 		}, true);
 
 		document.addEventListener('mousemove', function(e) { // Makes the window follow the mouse if the click is held down
@@ -84,7 +80,7 @@ function addDOMElements(win) {
 	const titleBar = createTitleBar();
 	const settingsBar = createSettingsBar(win);
 	const body = document.createElement("div");
-	body.classList.add("window-body");
+	body.classList.add("window-body", "frame-border");
 
 	moveChildrenToBody(win.children, body);
 
