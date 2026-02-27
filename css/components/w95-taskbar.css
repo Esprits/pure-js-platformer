@@ -1,0 +1,33 @@
+w95-taskbar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	display: flex;
+	align-items: stretch;
+
+	width: 100vw;
+	height: 36px;
+
+	padding: 3px;
+
+	background: silver;
+}
+
+.taskbar-start-button {
+	display: flex;
+	align-items: center;
+}
+
+.taskbar-start-icon {
+	width: 22px;
+	height: 22px;
+
+	margin: 0 5px;
+
+	background: red;
+}
+
+.taskbar-start-text {
+	margin-right: 5px;
+}

@@ -57,7 +57,7 @@ class W95Window extends HTMLElement {
 
 	attributeChangedCallback(name, oldValue, newValue) { // Called when attributes are changed, added, removed, or replaced.
 		// Unused for now
-		// If I do plan to use it, add "static observedAttributes = ["style"];" before the constructor
+		// If I do plan to use it, add "static observedAttributes = ["attribute"];" before the constructor
 	}
 
 	// Get & Set add the "dragged" state for CSS
