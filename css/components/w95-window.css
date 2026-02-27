@@ -103,8 +103,6 @@ w95-window:state(dragged) {
 }
 
 .window-settings-dropdown {
-	display: none;
-
 	position: absolute;
 	top: 0;
 	left: 0;

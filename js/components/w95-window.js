@@ -168,11 +168,28 @@ function initiateSetting(item, settingsBar) {
 	if (item.hasDropdown) {
 		const dropdown = document.createElement("div");
 		dropdown.classList.add("window-settings-dropdown", "window-border");
+		dropdown.style.display = "none";
+
+		setting.addEventListener('mousedown', function(e) {
+			toggleDropdown(dropdown);
+		}, true);
 
 		setting.append(dropdown);
+	} else {
+		setting.addEventListener('mousedown', function(e) {
+			window[item.function]();
+		}, true)
 	}
 
 	settingsBar.append(setting);
+}
+
+function toggleDropdown(dropdown) {
+	if (dropdown.style.display == "none") {
+		dropdown.style.display = "block"
+	} else {
+		dropdown.style.display = "none"
+	}
 }
 
 function createFooter(win) {
