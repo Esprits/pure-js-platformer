@@ -3,7 +3,9 @@
 }
 
 #mainCanvas {
-	display: block;
+	position: absolute;
+	top: 0;
 
-	background: white;
+	width: 100%;
+	height: 100%;
 }

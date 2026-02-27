@@ -117,6 +117,8 @@ w95-window:state(dragged) {
 }
 
 .window-body {
+	position: relative;
+
 	flex-grow: 1;
 
 	background: white;
