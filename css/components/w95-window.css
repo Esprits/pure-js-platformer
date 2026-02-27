@@ -18,30 +18,6 @@ w95-window:state(dragged) {
 	background-size: cover;
 }
 
-/* Adds a "pop out" border */
-.window-border {
-	border-style: solid;
-
-	border-top-color: #f9f9f9;
-	border-left-color: #ededed;
-	border-right-color: #474747;
-	border-bottom-color: #555555;
-
-	border-width: 2px;
-}
-
-/* Adds a "cave in" border */
-.frame-border {
-	border-style: solid;
-
-	border-top-color: #353535;
-	border-left-color: #505050;
-	border-right-color: #e8e8e8;
-	border-bottom-color: #dfdfdf;
-
-	border-width: 2px;
-}
-
 .window-title-bar {
 	display: flex;
 	align-items: center;
@@ -100,5 +76,69 @@ w95-window:state(dragged) {
 	margin-left: 4px;
 
 	background: silver;
+}
+
+.window-settings-bar {
+	display: flex;
+	align-items: center;
+
+	margin: 2px 0;
+}
+
+.window-settings-button {
+	position: relative;
+
+	padding: 4px 8px;
+
+	cursor: pointer;
+}
+
+.window-settings-button:active {
+	background: #0f06ab;
+	color: white;
+}
+
+.window-settings-name {
 	
+}
+
+.window-settings-dropdown {
+	display: none;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateY(30px);
+
+	min-width: 150px;
+	min-height: 200px;
+
+	background: silver;
+
+	cursor: initial;
+}
+
+
+
+/* Adds a "pop out" border */
+.window-border {
+	border-style: solid;
+
+	border-top-color: #f9f9f9;
+	border-left-color: #ededed;
+	border-right-color: #474747;
+	border-bottom-color: #555555;
+
+	border-width: 2px;
+}
+
+/* Adds a "cave in" border */
+.frame-border {
+	border-style: solid;
+
+	border-top-color: #353535;
+	border-left-color: #505050;
+	border-right-color: #e8e8e8;
+	border-bottom-color: #dfdfdf;
+
 }

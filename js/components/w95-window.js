@@ -81,7 +81,12 @@ class W95Window extends HTMLElement {
 // Fills in the window with the basic elements (title bar, settings bar, etc.)
 function addDOMElements(win) {
 	const titleBar = createTitleBar();
+	const settingsBar = createSettingsBar(win);
 
+
+	if (settingsBar) {
+		win.insertBefore(settingsBar, win.firstChild);
+	}
 	win.insertBefore(titleBar, win.firstChild);
 }
 
@@ -119,6 +124,44 @@ function createTitleBar() {
 	titleBar.append(buttons);
 
 	return titleBar;
+}
+
+function createSettingsBar(win) {
+	const settingsBar = document.createElement("div");
+	settingsBar.classList.add("window-settings-bar");
+
+	const settings = JSON.parse(win.getAttribute("settings"));
+
+	if (settings) {
+		// Checks the JSON attribute for settings and adds them here according to it
+		settings.forEach((item) => {
+			initiateSetting(item, settingsBar);
+		});
+
+		return settingsBar;
+	} else {
+		return null;
+	}
+}
+
+function initiateSetting(item, settingsBar) {
+	const setting = document.createElement("div");
+	setting.classList.add("window-settings-button");
+
+	const name = document.createElement("p");
+	name.classList.add("window-settings-name");
+	name.textContent = item.name;
+
+	setting.append(name);
+
+	if (item.hasDropdown) {
+		const dropdown = document.createElement("div");
+		dropdown.classList.add("window-settings-dropdown", "window-border");
+
+		setting.append(dropdown);
+	}
+
+	settingsBar.append(setting);
 }
 
 customElements.define("w95-window", W95Window);

@@ -16,20 +16,13 @@
 		<link rel="stylesheet" type="text/css" href="css/components/w95-window.css">
 	</head>
 	<body>
-		<!-- This is all temporary; it will be remade and moved into a w95-window -->
-		<div class="container">
-			<h2>Platformer Test</h2>
-			<nav>
-				<p onclick="fullscreen()" class="nav-button">Fullscreen</p>
-				<p onclick="settings()" class="nav-button">Settings</p>
-				<div id="settings" class="window-border" style="display: none;">
-				</div>
-			</nav>
+		<!-- I'll need to find a better way to store the settings JSON -->
+		<w95-window
+			settings='[
+				{"name": "Fullscreen", "hasDropdown": false, "function": "fullscreen"},
+				{"name": "Settings", "hasDropdown": true}
+			]'>
 			<canvas id="mainCanvas" width="640" height="480" class="frame-border"></canvas>
-		</div>
-
-		<w95-window>
-			<p>This is part of the window's body</p>
 		</w95-window>
 	</body>
 </html>
