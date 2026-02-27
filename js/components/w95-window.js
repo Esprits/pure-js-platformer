@@ -81,6 +81,7 @@ function addDOMElements(win) {
 	const settingsBar = createSettingsBar(win);
 	const body = document.createElement("div");
 	body.classList.add("window-body", "frame-border");
+	const footer = createFooter(win);
 
 	moveChildrenToBody(win.children, body);
 
@@ -89,6 +90,7 @@ function addDOMElements(win) {
 	}
 	win.insertBefore(titleBar, win.firstChild);
 	win.append(body);
+	win.append(footer);
 }
 
 function moveChildrenToBody(children, body) {
@@ -108,7 +110,7 @@ function createTitleBar() {
 
 	const title = document.createElement("h1");
 	title.classList.add("window-title");
-	title.textContent = "This would normally be the window's title bar";
+	title.textContent = "This is the title";
 
 	const filler = document.createElement("div");
 	filler.classList.add("flex-filler");
@@ -171,6 +173,14 @@ function initiateSetting(item, settingsBar) {
 	}
 
 	settingsBar.append(setting);
+}
+
+function createFooter(win) {
+	const footer = document.createElement("div");
+	footer.classList.add("window-footer", "frame-border");
+	footer.textContent = win.getAttribute("footer");
+
+	return footer;
 }
 
 customElements.define("w95-window", W95Window);

@@ -124,6 +124,14 @@ w95-window:state(dragged) {
 	background: white;
 }
 
+.window-footer {
+	display: flex;
+	align-items: center;
+
+	margin-top: 4px;
+	padding: 2px 4px;
+}
+
 
 
 /* Adds a "pop out" border */
