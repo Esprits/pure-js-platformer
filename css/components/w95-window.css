@@ -3,6 +3,9 @@ w95-window {
 	left: 0;
 	top: 0;
 
+	display: flex;
+	flex-direction: column;
+
 	width: 800px;
 	height: 600px;
 
@@ -118,6 +121,10 @@ w95-window:state(dragged) {
 	cursor: initial;
 }
 
+.window-body {
+	flex-grow: 1;
+}
+
 
 
 /* Adds a "pop out" border */
@@ -141,4 +148,5 @@ w95-window:state(dragged) {
 	border-right-color: #e8e8e8;
 	border-bottom-color: #dfdfdf;
 
+	border-width: 2px;
 }

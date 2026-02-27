@@ -64,6 +64,7 @@ class W95Window extends HTMLElement {
 		// If I do plan to use it, add "static observedAttributes = ["style"];" before the constructor
 	}
 
+	// Get & Set add the "dragged" state for CSS
 	get dragged() {
 		return this._internals.states.has("dragged");
 	}
@@ -82,12 +83,24 @@ class W95Window extends HTMLElement {
 function addDOMElements(win) {
 	const titleBar = createTitleBar();
 	const settingsBar = createSettingsBar(win);
+	const body = document.createElement("div");
+	body.classList.add("window-body");
 
+	moveChildrenToBody(win.children, body);
 
 	if (settingsBar) {
 		win.insertBefore(settingsBar, win.firstChild);
 	}
 	win.insertBefore(titleBar, win.firstChild);
+	win.append(body);
+}
+
+function moveChildrenToBody(children, body) {
+	while (children.length > 0) {
+		const child = children[0];
+
+		body.append(child);
+	}
 }
 
 function createTitleBar() {
