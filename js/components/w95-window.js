@@ -2,8 +2,6 @@
 // I did not know you could do that; it's pretty cool so far
 
 class W95Window extends HTMLElement {
-	// static observedAttributes = ["style"];
-
 	constructor() {
 		super();
 
@@ -59,6 +57,7 @@ class W95Window extends HTMLElement {
 
 	attributeChangedCallback(name, oldValue, newValue) { // Called when attributes are changed, added, removed, or replaced.
 		// Unused for now
+		// If I do plan to use it, add "static observedAttributes = ["style"];" before the constructor
 	}
 
 	get dragged() {
@@ -74,12 +73,48 @@ class W95Window extends HTMLElement {
 	}
 }
 
-function addDOMElements(win) { // Fills in the window with the basic elements (title bar, settings bar, etc.)
-	const titleBar = document.createElement("div");
-	titleBar.classList.add("window-title-bar");
-	titleBar.textContent = "This would normally be the window's title bar";
+
+// Fills in the window with the basic elements (title bar, settings bar, etc.)
+function addDOMElements(win) {
+	const titleBar = createTitleBar();
 
 	win.insertBefore(titleBar, win.firstChild);
+}
+
+function createTitleBar() {
+	const titleBar = document.createElement("div");
+	titleBar.classList.add("window-title-bar");
+
+	const icon = document.createElement("div");
+	icon.classList.add("window-title-icon");
+
+	const title = document.createElement("h1");
+	title.classList.add("window-title");
+	title.textContent = "This would normally be the window's title bar";
+
+	const filler = document.createElement("div");
+	filler.classList.add("flex-filler");
+
+	const buttons = document.createElement("div");
+	buttons.classList.add("window-title-buttons");
+
+	const minimiseButton = document.createElement("div");
+	const maximiseButton = document.createElement("div");
+	const closeButton = document.createElement("div");
+	minimiseButton.classList.add("window-title-buttons-minimise", "window-border");
+	maximiseButton.classList.add("window-title-buttons-maximise", "window-border");
+	closeButton.classList.add("window-title-buttons-close", "window-border");
+
+	buttons.append(minimiseButton);
+	buttons.append(maximiseButton);
+	buttons.append(closeButton);
+
+	titleBar.append(icon);
+	titleBar.append(title);
+	titleBar.append(filler);
+	titleBar.append(buttons);
+
+	return titleBar;
 }
 
 customElements.define("w95-window", W95Window);

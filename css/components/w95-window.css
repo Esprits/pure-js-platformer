@@ -6,6 +6,8 @@ w95-window {
 	width: 800px;
 	height: 600px;
 
+	padding: 3px;
+
 	background: silver;
 }
 
@@ -41,5 +43,62 @@ w95-window:state(dragged) {
 }
 
 .window-title-bar {
+	display: flex;
+	align-items: center;
+
+	padding: 4px;
+
+	background: #0f06ab;
+}
+
+.window-title-bar > *:first-child {
+	margin-right: 2px;
+}
+
+.window-title-bar > *:not(:first-child):not(:last-child) {
+	margin: 0 2px;
+}
+
+.window-title-bar > *:last-child {
+	margin-left: 2px;
+}
+
+.window-title-icon {
+	width: 24px;
+	height: 24px;
+
+	background: red;
+}
+
+.window-title {
+	color: white;
+}
+
+.window-title-buttons {
+	display: flex;
+	align-items: center;
+}
+
+.window-title-buttons-minimise {
+	width: 22px;
+	height: 22px;
+
+	background: silver;
+}
+
+.window-title-buttons-maximise {
+	width: 22px;
+	height: 22px;
+
+	background: silver;
+}
+
+.window-title-buttons-close {
+	width: 22px;
+	height: 22px;
+
+	margin-left: 4px;
+
+	background: silver;
 	
 }

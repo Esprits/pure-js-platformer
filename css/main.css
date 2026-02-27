@@ -1,14 +1,5 @@
-.container {
-	padding: 10px;
-}
-
-nav {
-	position: relative;
-
-	display: flex;
-	align-items: center;
-
-	width: 640px;
+.flex-filler {
+	flex-grow: 1;
 }
 
 .nav-button {
