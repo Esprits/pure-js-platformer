@@ -97,7 +97,7 @@ w95-window:state(dragged) {
 	cursor: pointer;
 }
 
-.window-settings-button:active {
+.window-settings-button:active, .window-settings-button-active {
 	background: #0f06ab;
 	color: white;
 }

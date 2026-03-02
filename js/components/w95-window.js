@@ -171,25 +171,79 @@ function initiateSetting(item, settingsBar) {
 		dropdown.style.display = "none";
 
 		setting.addEventListener('mousedown', function(e) {
-			toggleDropdown(dropdown);
+			toggleDropdownMode(settingsBar, setting, dropdown);
+		});
+
+		dropdown.addEventListener('mousedown', function(e) {
+			e.stopPropagation();
+		}, true);
+
+		setting.addEventListener('mouseover', function(e) {			
+			if (settingsBar.classList.contains("window-settings-bar-dropdown-mode")) {
+				openDropdown(setting, dropdown);
+				closeAllOtherDropdowns(settingsBar, setting);
+			}
+		}, true);
+
+		document.addEventListener('mousedown', function(e) {
+			if (!e.target.closest(".window-settings-button-active")) {
+				stopDropdownMode(settingsBar);
+				closeAllDropdowns(settingsBar);
+			}
 		}, true);
 
 		setting.append(dropdown);
 	} else {
 		setting.addEventListener('mousedown', function(e) {
 			window[item.function]();
-		}, true)
+		}, true);
 	}
 
 	settingsBar.append(setting);
 }
 
-function toggleDropdown(dropdown) {
-	if (dropdown.style.display == "none") {
-		dropdown.style.display = "block"
+function toggleDropdownMode(settingsBar, setting, dropdown) {
+	if (!settingsBar.classList.contains("window-settings-bar-dropdown-mode")) {
+		startDropdownMode(settingsBar);
+		openDropdown(setting, dropdown);
 	} else {
-		dropdown.style.display = "none"
+		stopDropdownMode(settingsBar);
+		closeDropdown(setting, dropdown);
 	}
+}
+
+function startDropdownMode(settingsBar) {
+	settingsBar.classList.add("window-settings-bar-dropdown-mode");
+}
+
+function stopDropdownMode(settingsBar) {
+	settingsBar.classList.remove("window-settings-bar-dropdown-mode");
+}
+
+function openDropdown(setting, dropdown) {
+	setting.classList.add("window-settings-button-active");
+	dropdown.style.display = "block";
+}
+
+function closeDropdown(setting, dropdown) {
+	setting.classList.remove("window-settings-button-active");
+	dropdown.style.display = "none";
+}
+
+function closeAllDropdowns(settingsBar) {
+	Array.from(settingsBar.children).forEach(item => {
+		if (item.children.length > 1) {
+			closeDropdown(item, item.children[1]);
+		}
+	})
+}
+
+function closeAllOtherDropdowns(settingsBar, currentSetting) {
+	Array.from(settingsBar.children).forEach(item => {
+		if (item !== currentSetting && item.children.length > 1) {
+			closeDropdown(item, item.children[1]);
+		}
+	})
 }
 
 function createFooter(win) {
