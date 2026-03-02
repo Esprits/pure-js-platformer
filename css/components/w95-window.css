@@ -48,6 +48,10 @@ w95-window:state(dragged) {
 
 .window-title {
 	color: white;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .window-title-buttons {

@@ -17,17 +17,77 @@ w95-taskbar {
 .taskbar-start-button {
 	display: flex;
 	align-items: center;
+
+	padding: 2px;
 }
 
 .taskbar-start-icon {
 	width: 22px;
 	height: 22px;
 
-	margin: 0 5px;
+	margin: 0 3px;
 
 	background: red;
 }
 
 .taskbar-start-text {
-	margin-right: 5px;
+	margin: 0 3px;
+}
+
+.taskbar-apps {
+	display: flex;
+
+	margin: 0 5px;
+}
+
+.taskbar-apps-button {
+	display: flex;
+	align-items: center;
+
+	width: 200px;
+	
+	padding: 2px;
+}
+
+.taskbar-apps-button-icon {
+	flex-shrink: 0;
+
+	width: 22px;
+	height: 22px;
+
+	margin: 0 3px;
+
+	background: red;
+}
+
+.taskbar-apps-button-text {
+	margin: 0 3px;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.taskbar-apps > *:first-child {
+	margin-right: 2px;
+}
+
+.taskbar-apps > *:not(:first-child):not(:last-child) {
+	margin: 0 2px;
+}
+
+.taskbar-apps > *:last-child {
+	margin-left: 2px;
+}
+
+.taskbar-clock {
+	display: flex;
+	align-items: center;
+
+	margin-right: 6px;
+	padding: 0 15px;
+}
+
+.taskbar-clock-time {
+
 }

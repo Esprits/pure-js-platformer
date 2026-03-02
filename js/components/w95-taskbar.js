@@ -13,8 +13,12 @@ class W95Taskbar extends HTMLElement {
 
 function addDOMElements(win) {
 	const startButton = createStartButton();
+	const taskbarApps = createTaskbarApps();
+	const clock = createClock();
 
 	win.append(startButton);
+	win.append(taskbarApps);
+	win.append(clock);
 }
 
 function createStartButton() {
@@ -31,6 +35,38 @@ function createStartButton() {
 	startButton.append(startText);
 
 	return startButton;
+}
+
+function createTaskbarApps() {
+	const taskbarApps = document.createElement("div");
+	taskbarApps.classList.add("taskbar-apps", "flex-filler");
+
+	const temporaryApp = document.createElement("div");
+	temporaryApp.classList.add("taskbar-apps-button", "window-border");
+
+	const icon = document.createElement("div");
+	icon.classList.add("taskbar-apps-button-icon");
+	const text = document.createElement("p");
+	text.classList.add("taskbar-apps-button-text");
+	text.textContent = "This is the title"
+	temporaryApp.append(icon, text);
+
+	taskbarApps.append(temporaryApp);
+
+	return taskbarApps;
+}
+
+function createClock() {
+	const clock = document.createElement("div");
+	clock.classList.add("taskbar-clock", "frame-border");
+
+	const time = document.createElement("p");
+	time.classList.add("taskbar-clock-time");
+	time.textContent = "12:00 PM"
+
+	clock.append(time);
+
+	return clock;
 }
 
 customElements.define("w95-taskbar", W95Taskbar);
