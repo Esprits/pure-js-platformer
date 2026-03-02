@@ -91,44 +91,6 @@ w95-window:state(maximised) {
 	background: silver;
 }
 
-.window-settings-bar {
-	display: flex;
-	align-items: center;
-
-	margin: 2px 0;
-}
-
-.window-settings-button {
-	position: relative;
-
-	padding: 4px 8px;
-
-	cursor: pointer;
-}
-
-.window-settings-button:active, .window-settings-button-active {
-	background: #0f06ab;
-	color: white;
-}
-
-.window-settings-name {
-	
-}
-
-.window-settings-dropdown {
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform: translateY(30px);
-
-	min-width: 150px;
-	min-height: 200px;
-
-	background: silver;
-
-	cursor: initial;
-}
-
 .window-body {
 	flex-grow: 1;
 

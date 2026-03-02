@@ -12,21 +12,16 @@
 		<script src="js/main.js" async></script>
 
 		<!-- Components -->
-		<script src="js/components/w95-window.js" async></script>
+		<script src="js/components/w95-window/w95-window.js" async></script>
+		<script src="js/components/w95-window/w95-window-settings.js" async></script>
 		<script src="js/components/w95-taskbar.js" async></script>
-		<link rel="stylesheet" type="text/css" href="css/components/w95-window.css">
+		<link rel="stylesheet" type="text/css" href="css/components/w95-window/w95-window.css">
+		<link rel="stylesheet" type="text/css" href="css/components/w95-window/w95-window-settings.css">
 		<link rel="stylesheet" type="text/css" href="css/components/w95-taskbar.css">
 	</head>
 	<body>
 		<!-- I'll need to find a better way to store the settings JSON -->
-		<w95-window
-			settings='[
-				{"name": "Fullscreen", "hasDropdown": false, "function": "fullscreen"},
-				{"name": "File", "hasDropdown": true},
-				{"name": "Edit", "hasDropdown": true},
-				{"name": "View", "hasDropdown": true},
-				{"name": "Help", "hasDropdown": true}
-			]' footer="This is the footer">
+		<w95-window footer="This is the footer">
 			<canvas id="mainCanvas"></canvas>
 		</w95-window>
 		<w95-taskbar></w95-taskbar>

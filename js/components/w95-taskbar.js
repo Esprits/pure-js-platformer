@@ -4,21 +4,21 @@ class W95Taskbar extends HTMLElement {
 	}
 
 	connectedCallback() { // Called each time the element is added to the document
-		const win = this;
+		const taskbar = this;
 
-		win.classList.add("taskbar-border");
-		addDOMElements(win);
+		taskbar.classList.add("taskbar-border");
+		addDOMElements(taskbar);
 	}
 }
 
-function addDOMElements(win) {
+function addDOMElements(taskbar) {
 	const startButton = createStartButton();
 	const taskbarApps = createTaskbarApps();
 	const clock = createClock();
 
-	win.append(startButton);
-	win.append(taskbarApps);
-	win.append(clock);
+	taskbar.append(startButton);
+	taskbar.append(taskbarApps);
+	taskbar.append(clock);
 }
 
 function createStartButton() {
