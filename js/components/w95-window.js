@@ -27,7 +27,8 @@ class W95Window extends HTMLElement {
 
  			// Verifies if the click actually comes from the title bar (-5 is top-left & adds clientWidth/Height to it)
 			if (offset[0] <= -5 && offset[0] >= -5 - titleBar.clientWidth
-			&& offset[1] <= -5 && offset[1] >= -5 - titleBar.clientHeight) {
+			&& offset[1] <= -5 && offset[1] >= -5 - titleBar.clientHeight
+			&& !win.maximised) {
 				mouseDown = true;
 				win.dragged = true;
 			}
@@ -72,12 +73,25 @@ class W95Window extends HTMLElement {
 			this._internals.states.delete("dragged");
 		}
 	}
+
+	// Get & Set add the "maximised" state for CSS
+	get maximised() {
+		return this._internals.states.has("maximised");
+	}
+
+	set maximised(flag) {
+		if (flag) {
+			this._internals.states.add("maximised");
+		} else {
+			this._internals.states.delete("maximised");
+		}
+	}
 }
 
 
 // Fills in the window with the basic elements (title bar, settings bar, etc.)
 function addDOMElements(win) {
-	const titleBar = createTitleBar();
+	const titleBar = createTitleBar(win);
 	const settingsBar = createSettingsBar(win);
 	const body = document.createElement("div");
 	body.classList.add("window-body", "frame-border");
@@ -101,7 +115,7 @@ function moveChildrenToBody(children, body) {
 	}
 }
 
-function createTitleBar() {
+function createTitleBar(win) {
 	const titleBar = document.createElement("div");
 	titleBar.classList.add("window-title-bar");
 
@@ -118,16 +132,11 @@ function createTitleBar() {
 	const buttons = document.createElement("div");
 	buttons.classList.add("window-title-buttons");
 
-	const minimiseButton = document.createElement("div");
-	const maximiseButton = document.createElement("div");
-	const closeButton = document.createElement("div");
-	minimiseButton.classList.add("window-title-buttons-minimise", "window-border");
-	maximiseButton.classList.add("window-title-buttons-maximise", "window-border");
-	closeButton.classList.add("window-title-buttons-close", "window-border");
+	createTitleButtons(buttons, win);
 
-	buttons.append(minimiseButton);
-	buttons.append(maximiseButton);
-	buttons.append(closeButton);
+	titleBar.addEventListener('dblclick', function(e) {
+		toggleMaximised(win);
+	}, true);
 
 	titleBar.append(icon);
 	titleBar.append(title);
@@ -135,6 +144,39 @@ function createTitleBar() {
 	titleBar.append(buttons);
 
 	return titleBar;
+}
+
+function createTitleButtons(buttons, win) {
+	const minimiseButton = document.createElement("div");
+	const maximiseButton = document.createElement("div");
+	const closeButton = document.createElement("div");
+	minimiseButton.classList.add("window-title-buttons-minimise", "window-border");
+	maximiseButton.classList.add("window-title-buttons-maximise", "window-border");
+	closeButton.classList.add("window-title-buttons-close", "window-border");
+
+	minimiseButton.addEventListener('mousedown', function() {
+		// TODO
+	}, true);
+
+	maximiseButton.addEventListener('mousedown', function() {
+		toggleMaximised(win);
+	}, true);
+
+	closeButton.addEventListener('mousedown', function() {
+		// TODO
+	}, true);
+
+	buttons.append(minimiseButton);
+	buttons.append(maximiseButton);
+	buttons.append(closeButton);
+}
+
+function toggleMaximised(win) {
+	if (!win.maximised) {
+		win.maximised = true;
+	} else {
+		win.maximised = false;
+	}
 }
 
 function createSettingsBar(win) {

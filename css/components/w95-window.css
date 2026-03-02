@@ -6,6 +6,7 @@ w95-window {
 	display: flex;
 	flex-direction: column;
 
+	box-sizing: border-box;
 	width: 800px;
 	height: 600px;
 
@@ -16,6 +17,14 @@ w95-window {
 
 w95-window:state(dragged) {
 
+}
+
+w95-window:state(maximised) {
+	top: 0!important;
+	left: 0!important;
+
+	width: 100%;
+	height: calc(100% - 44px);
 }
 
 .window-title-bar {
